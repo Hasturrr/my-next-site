@@ -1,10 +1,16 @@
-import { Html, Head, Main, NextScript } from "next/document";
+// pages/_document.tsx
+import { Html, Head, Main, NextScript } from 'next/document';
+
+const isProd = process.env.NODE_ENV === 'production';
 
 export default function Document() {
   return (
-    <Html lang="en">
-      <Head />
-      <body className="antialiased">
+    <Html>
+      <Head>
+        {/*GitHub Pages insert base */}
+        {isProd && <base href="/my-next-site/" />}
+      </Head>
+      <body>
         <Main />
         <NextScript />
       </body>
