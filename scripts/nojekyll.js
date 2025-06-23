@@ -1,2 +1,8 @@
+// scripts/nojekyll.js
 const fs = require('fs');
-fs.writeFileSync('out/.nojekyll', '');
+const path = require('path');
+
+const filePath = path.join(__dirname, '..', 'out', '.nojekyll');
+
+fs.writeFileSync(filePath, '');
+console.log('✅ .nojekyll created');

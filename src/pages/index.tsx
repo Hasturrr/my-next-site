@@ -10,6 +10,8 @@ import {
   SparklesIcon,
   ClipboardDocumentCheckIcon,
 } from '@heroicons/react/24/outline';
+import PartnerScroll from '@/components/PartnerScroll';
+import FrameworkSlider from '@/components/AboutScroll';
 
 export default function Home() {
   const [loaded, setLoaded] = useState(false);
@@ -30,88 +32,119 @@ export default function Home() {
       <main className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-blue-100 text-gray-800">
 
         {/* Hero Section */}
-        <section id="hero" className="w-full bg-gradient-to-br from-[#eef4ff] to-white py-24 px-6 text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: -30 }}
-            animate={{ opacity: loaded ? 1 : 0, y: loaded ? 0 : -30 }}
-            transition={{ duration: 0.8 }}
-            className="text-5xl md:text-6xl font-extrabold leading-tight mb-6 text-blue-800"
-          >
-            Galaxy3 AI <br className="hidden md:block" /> Data Center Solutions
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: loaded ? 1 : 0 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-xl md:text-2xl max-w-2xl mx-auto mb-10 text-gray-700"
-          >
-            We engineer next-generation AI infrastructure—liquid-cooled, high-density, and optimized for machine learning performance.
-          </motion.p>
-          <motion.a
-            href="#contact"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: loaded ? 1 : 0, scale: loaded ? 1 : 0.95 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
-          >
-            <button className="bg-white text-blue-700 px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 hover:scale-105 transition duration-300 font-semibold">
-              Get a Consultation
-            </button>
-          </motion.a>
+        <section
+          id="hero"
+          className="relative w-full py-24 px-6 text-center overflow-hidden"
+        >
+          {/* background image */}
+          <div
+            className="absolute inset-0 bg-cover bg-center scale-110 blur-[1px] brightness-75"
+            style={{ backgroundImage: `url(${prefix}/images/home-page.png)` }}
+          />
+          {/* dark radial overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-blue-900/30 to-blue-950/60" />
+
+          {/* content */}
+          <div className="relative z-10">
+            <motion.h1
+              initial={{ opacity: 0, y: -30 }}
+              animate={{ opacity: loaded ? 1 : 0, y: loaded ? 0 : -30 }}
+              transition={{ duration: 0.8 }}
+              className="text-5xl md:text-6xl font-extrabold leading-tight mb-6 text-white drop-shadow-lg"
+            >
+              Galaxy3 AI <br className="hidden md:block" /> Data Center Solutions
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: loaded ? 1 : 0 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              className="text-xl md:text-2xl max-w-2xl mx-auto mb-10 text-blue-100 drop-shadow"
+            >
+              We engineer next-generation AI infrastructure—liquid-cooled, high-density,
+              and optimized for machine learning performance.
+            </motion.p>
+
+            <Link href="#contact" passHref>
+              <motion.button
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: loaded ? 1 : 0, scale: loaded ? 1 : 0.95 }}
+                transition={{ delay: 0.6, duration: 0.6 }}
+                className="bg-white text-blue-700 px-8 py-3 rounded-full shadow-lg
+                          hover:bg-gray-100 hover:scale-105 transition duration-300 font-semibold"
+              >
+                Get a Consultation
+              </motion.button>
+            </Link>
+          </div>
         </section>
 
         {/* Partner Logos - Horizontal Scroll */} 
-        <section className="bg-gray-100 py-4 px-4">
-          <div className="max-w-6xl mx-auto overflow-x-auto">
-            <div className="flex items-center space-x-8 min-w-[700px]">
-              {[
-                '/images/partner1.png',
-                '/images/partner2.png',
-                '/images/partner7.png',
-                '/images/partner4.png',
-                '/images/partner8.png',
-                '/images/partner6.png',
-              ].map((src, i) => (
-                <img
-                  key={i}
-                  src={`${prefix}${src}`}
-                  alt={`Partner ${i + 1}`}
-                  className="h-14 sm:h-16 md:h-20 w-auto object-contain opacity-80 hover:opacity-100 transition duration-200"
-                />
-              ))}
-            </div>
-          </div>
-        </section>
+        <PartnerScroll />
+
 
         {/* Company Milestones / Metrics Section */}
         <section
           id="metrics"
-          className="relative bg-white py-24 px-4 sm:px-8 overflow-hidden"
+          className="relative bg-white py-28 px-6 sm:px-12 overflow-hidden"
         >
-          <div className="absolute inset-0 bg-[url('/images/background-light.png')] bg-cover bg-center opacity-55 pointer-events-none" />
-          <div className="relative z-10 max-w-6xl mx-auto flex flex-col items-center text-center space-y-12">
-            
-            {/* Top Illustration */}
-            <div>
-              <img
-                src={`${prefix}/images/office-team.jpg`}
-                alt="Anniversary Logo"
-                className="h-28 sm:h-36 md:h-44 object-contain mx-auto"
-              />
-            </div>
+          <div
+            className="absolute inset-0 bg-cover bg-center opacity-55 pointer-events-none"
+            style={{ backgroundImage: `url(${prefix}/images/background-light.png)` }}
+          />
 
-            {/* Message */}
-            <div>
-              <p className="text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed">
-                We’ve <span className="font-bold text-black">nurtured and developed</span> AI infrastructure services worldwide.
+          {/* container */}
+          <div className="relative z-10 max-w-6xl mx-auto text-center space-y-20">
+
+            {/* title */}
+            <div className="space-y-4">
+              <h2 className="text-4xl md:text-5xl font-bold text-blue-800 leading-tight">
+                Milestones That Define Us
+              </h2>
+              <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+                From our founding roots to global delivery, Galaxy3 has grown into a trusted name in AI data center engineering.
               </p>
             </div>
 
-            {/* Metrics */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 w-full max-w-4xl">
+            {/* Milestone */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-left">
               {[
-                { number: '200+', label: 'Customers', color: 'text-green-600' },
-                { number: '30+', label: 'Countries', color: 'text-yellow-500' },
-                { number: '4,000+', label: 'Projects', color: 'text-sky-600' },
+                {
+                  year: '2008',
+                  title: 'Company Founded',
+                  desc: 'Galaxy3 established in New York, delivering MEP and low-voltage solutions.',
+                  color: 'bg-blue-50',
+                },
+                {
+                  year: '2015',
+                  title: 'West Coast Expansion',
+                  desc: 'California & Arizona offices opened, supporting regional data center growth.',
+                  color: 'bg-blue-100',
+                },
+                {
+                  year: '2022',
+                  title: 'AI Infrastructure Pivot',
+                  desc: 'Shifted to liquid-cooled high-density systems for AI/ML workloads.',
+                  color: 'bg-blue-200',
+                },
+              ].map((m, i) => (
+                <div
+                  key={i}
+                  className={`rounded-2xl p-6 shadow-md hover:shadow-xl transition ${m.color}`}
+                >
+                  <div className="text-3xl font-bold text-blue-700 mb-2">{m.year}</div>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-1">{m.title}</h3>
+                  <p className="text-gray-600 text-sm">{m.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Metrics*/}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 mt-12">
+              {[
+                { number: '200+', label: 'Customers Worldwide', color: 'text-green-600' },
+                { number: '30+', label: 'Countries Served', color: 'text-yellow-500' },
+                { number: '120+', label: 'Projects Delivered', color: 'text-sky-600' },
               ].map((item, idx) => (
                 <div key={idx} className="space-y-2">
                   <h3 className={`text-5xl font-extrabold ${item.color}`}>{item.number}</h3>
@@ -120,56 +153,76 @@ export default function Home() {
               ))}
             </div>
 
-            {/* CTA Button */}
-            <motion.a
-              href="/about"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: loaded ? 1 : 0, scale: loaded ? 1 : 0.95 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-            >
-              <button className="bg-blue-600 text-white px-8 py-3 rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg transition duration-300 font-semibold">
-                Learn more about our company
-              </button>
-            </motion.a>
+            {/* CTA */}
+            <Link href="/about" passHref>
+              <motion.button
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+                className="bg-blue-600 text-white px-8 py-3 rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg transition font-semibold mt-8"
+              >
+                Learn more about our journey
+              </motion.button>
+            </Link>
           </div>
         </section>
 
 
+
         {/* Features Section */}
-        <section id="features" className="px-4 sm:px-6 py-20 bg-white">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-left">
+        <section id="features" className="px-4 sm:px-6 py-24 bg-gradient-to-br from-blue-50 to-white">
+          <div className="max-w-7xl mx-auto text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-purple-600 to-indigo-600 mb-4 leading-tight">
+              Key Infrastructure Features
+            </h2>
+            <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
+              Integrated cooling, cabling, power, and security systems tailored for AI-ready data centers.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {[
               {
-                title: 'AI Performance at Scale',
-                desc: 'Custom-built infrastructure for AI/ML workloads, tailored to high thermal density environments.',
-                img: '/images/ai-performance.png',
+                title: 'Liquid Cooling Deployment',
+                desc: 'Expertise in cold plate and immersion systems for ultra-dense AI workloads.',
+                img: '/projects/liquid-cooling.jpg',
               },
               {
-                title: 'Advanced Liquid Cooling',
-                desc: 'Deploying 3,000x more efficient cooling systems than air, reducing energy waste and cost.',
-                img: '/images/liquid-cooling-system.png',
+                title: 'Structured Cabling & Power',
+                desc: 'End-to-end cabling, rPDU, and UPS integration across hyperscale and edge facilities.',
+                img: '/projects/cabling-power.jpg',
               },
               {
-                title: 'Sustainable Design',
-                desc: 'Low-emission systems, local sourcing, and smart materials contribute to green data center goals.',
-                img: '/images/sustainability.png',
+                title: 'Turnkey Data Center Delivery',
+                desc: 'From concept to commissioning, including BMS, fire suppression, and project control.',
+                img: '/projects/scale.jpg',
               },
             ].map(({ title, desc, img }, idx) => (
-              <div key={idx} className="bg-white/70 backdrop-blur rounded-xl shadow-xl p-6 border border-gray-100 hover:shadow-2xl transition">
-                <div className="w-full aspect-[16/9] rounded-md overflow-hidden mb-4">
-                  <img src={`${prefix}${img}`} alt={title} className="w-full h-full object-contain" />
+              <div
+                key={idx}
+                className="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition duration-300 overflow-hidden border border-gray-100"
+              >
+                <div className="w-full h-80 bg-gray-50 flex items-center justify-center">
+                  <img
+                    src={`${prefix}${img}`}
+                    alt={title}
+                    className="w-full h-full object-contain"
+                  />
                 </div>
-                <h3 className="text-xl font-semibold text-blue-700 mb-2">{title}</h3>
-                <p className="text-base text-gray-600 leading-relaxed">{desc}</p>
+                <div className="p-6 text-left">
+                  <h3 className="text-2xl font-bold text-blue-700 mb-3">{title}</h3>
+                  <p className="text-gray-600 text-base leading-relaxed">{desc}</p>
+                </div>
               </div>
             ))}
           </div>
         </section>
 
+
         {/* Solutions Section */}
         <section id="solutions" className="px-4 sm:px-6 py-20 bg-white">
           <div className="max-w-7xl mx-auto text-center">
-            <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-purple-600 to-indigo-600 mb-10">
+            <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-purple-600 to-indigo-600 mb-10 leading-tight">
               Our Solutions
             </h2>
             <p className="text-lg text-gray-700 mb-16 leading-relaxed max-w-3xl mx-auto">
@@ -238,92 +291,68 @@ export default function Home() {
               </div>
 
               {/* 5. Quality & Project Management */}
-              <div className="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition flex gap-4 md:col-span-2">
-                <div className="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center">
-                  <ClipboardDocumentCheckIcon className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-indigo-700 mb-3">Quality & Project Management</h3>
-                  <ul className="list-disc list-inside text-gray-700 space-y-2">
-                    <li>Pressure, air-tightness testing & prefabrication</li>
-                    <li>Schedule tracking, safety officer oversight</li>
-                    <li>Full team governance: PMs, QC, installers</li>
-                  </ul>
+              <div className="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition md:col-span-2 flex justify-center">
+                <div className="max-w-3xl flex gap-4">
+                  <div className="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center">
+                    <ClipboardDocumentCheckIcon className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-indigo-700 mb-3">Quality & Project Management</h3>
+                    <ul className="list-disc list-inside text-gray-700 space-y-2">
+                      <li>Pressure, air-tightness testing & prefabrication</li>
+                      <li>Schedule tracking, safety officer oversight</li>
+                      <li>Full team governance: PMs, QC, installers</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-
-            {/* 4M1E Block - Optimized Version */}
-            <section id="4m1e" className="bg-gray-50 px-4 sm:px-6 py-20">
-              <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12">
-                {/* Image Section */}
-                <div className="lg:w-1/2 w-full max-w-2xl">
-                  <div className="rounded-xl shadow-lg overflow-hidden">
-                    <img
-                      src={`${prefix}/images/4m1e.png`}
-                      alt="4M1E Management Diagram"
-                      className="w-full h-auto object-contain"
-                    />
-                  </div>
-                </div>
-
-                {/* Text Section */}
-                <div className="lg:w-1/2 w-full">
-                  <h3 className="text-2xl sm:text-3xl font-bold text-blue-800 mb-6">4M1E Management Model</h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    {[
-                      { label: "Manpower", desc: "Skilled and certified operators for every task" },
-                      { label: "Materials", desc: "Verified supplies with inspection certificates" },
-                      { label: "Machine", desc: "Maintained equipment and specialized tools" },
-                      { label: "Method", desc: "Documented engineering procedures and processes" },
-                      { label: "Environment", desc: "Safety-first workspace with 5S methodology" },
-                    ].map((item, idx) => (
-                      <div key={idx} className="bg-white rounded-lg p-4 shadow hover:shadow-md transition">
-                        <h4 className="text-lg font-semibold text-blue-700 mb-1">{item.label}</h4>
-                        <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </section>
+        <FrameworkSlider />
 
         {/* Market Trends Section */}
-        <section id="trends" className="px-4 sm:px-6 py-20 bg-gradient-to-br from-blue-50 to-white">
-          <div className="max-w-6xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-blue-700 mb-6">Why Liquid Cooling?</h2>
-            <p className="text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto mb-8">
-              AI servers now exceed <strong>50kW per rack</strong>. Liquid cooling is the only scalable solution for such workloads—projected to become a <strong>$2B market by 2027</strong> with 60% CAGR.
+        <section id="trends" className="px-4 sm:px-6 py-24 bg-gradient-to-br from-blue-50 to-white">
+          <div className="max-w-7xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-700 mb-6">Why Liquid Cooling?</h2>
+            <p className="text-gray-700 text-lg leading-relaxed max-w-4xl mx-auto mb-12">
+              Traditional air cooling can no longer keep up with <strong>50kW+</strong> server racks. Cold plate and immersion cooling
+              enable sustainable, high-density deployments. The liquid cooling market is projected to surpass <strong>$2B</strong> by 2027,
+              driven by explosive AI demand.
             </p>
-            <div className="w-full max-w-5xl mx-auto aspect-[16/9] rounded-xl overflow-hidden shadow-md">
-              <img src={`${prefix}/images/liquid-vs-air.png`} alt="Liquid Cooling vs Air Cooling" className="w-full h-full object-contain" />
+
+            <div className="flex flex-col lg:flex-row items-center gap-12">
+              {/* Image: enlarged, responsive */}
+              <div className="w-full lg:w-3/5">
+                <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-200">
+                  <img
+                    src={`${prefix}/images/liquid-vs-air.png`}
+                    alt="Liquid vs Air Cooling Comparison"
+                    className="w-full h-auto object-contain"
+                  />
+                </div>
+              </div>
+
+              {/* Key Descriptions */}
+              <div className="w-full lg:w-2/5 space-y-6 text-left">
+                <div className="bg-white p-6 rounded-xl shadow border-l-4 border-blue-600">
+                  <h4 className="text-xl font-semibold text-blue-700 mb-2">Cold Plate Cooling</h4>
+                  <p className="text-gray-600 text-base leading-relaxed">
+                    Delivers cooling directly to processors, achieving high thermal transfer efficiency without submerging hardware.
+                  </p>
+                </div>
+                <div className="bg-white p-6 rounded-xl shadow border-l-4 border-purple-600">
+                  <h4 className="text-xl font-semibold text-purple-700 mb-2">Immersion Cooling</h4>
+                  <p className="text-gray-600 text-base leading-relaxed">
+                    Servers are fully immersed in dielectric fluid, eliminating air friction and maximizing density per rack.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section id="contact" className="relative bg-gradient-to-r from-blue-50 to-blue-100 text-center py-20 px-4">
-          {/* background */}
-          <div className="absolute inset-0 bg-[url('/images/datacenter-bg.jpg')] bg-cover bg-center opacity-20 mix-blend-multiply"></div>
-
-          {/* content */}
-          <div className="relative z-10 max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6 leading-snug">
-              Ready to power your AI infrastructure?
-            </h2>
-            <p className="text-gray-700 mb-8 text-lg">
-              Let our engineering team design, build, and support your next-generation data center.
-            </p>
-            <Link href="/contact">
-              <button className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold px-8 py-3 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition duration-300">
-                Get in Touch
-              </button>
-            </Link>
-          </div>
-        </section>
 
       </main>
 
