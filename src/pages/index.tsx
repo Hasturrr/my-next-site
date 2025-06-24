@@ -12,6 +12,7 @@ import {
 } from '@heroicons/react/24/outline';
 import PartnerScroll from '@/components/PartnerScroll';
 import FrameworkSlider from '@/components/AboutScroll';
+import LiquidCoolingSlider from '@/components/LiquidCoolingScroll';
 
 export default function Home() {
   const [loaded, setLoaded] = useState(false);
@@ -83,7 +84,7 @@ export default function Home() {
         <PartnerScroll />
 
 
-        {/* Company Milestones / Metrics Section */}
+        {/* Company Metrics Section - Refined for Light Theme */}
         <section
           id="metrics"
           className="relative bg-white py-28 px-6 sm:px-12 overflow-hidden"
@@ -93,62 +94,25 @@ export default function Home() {
             style={{ backgroundImage: `url(${prefix}/images/background-light.png)` }}
           />
 
-          {/* container */}
-          <div className="relative z-10 max-w-6xl mx-auto text-center space-y-20">
-
-            {/* title */}
-            <div className="space-y-4">
-              <h2 className="text-4xl md:text-5xl font-bold text-blue-800 leading-tight">
-                Milestones That Define Us
-              </h2>
-              <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-                From our founding roots to global delivery, Galaxy3 has grown into a trusted name in AI data center engineering.
-              </p>
+          <div className="relative z-10 max-w-6xl mx-auto text-center space-y-16">
+            {/* Small Title */}
+            <div className="flex items-center justify-center mb-6">
+              <div className="w-8 h-px bg-blue-700 mr-4" />
+              <span className="uppercase tracking-widest text-sm text-blue-700 font-semibold">
+                By the Numbers
+              </span>
             </div>
 
-            {/* Milestone */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-left">
-              {[
-                {
-                  year: '2008',
-                  title: 'Company Founded',
-                  desc: 'Galaxy3 established in New York, delivering MEP and low-voltage solutions.',
-                  color: 'bg-blue-50',
-                },
-                {
-                  year: '2015',
-                  title: 'West Coast Expansion',
-                  desc: 'California & Arizona offices opened, supporting regional data center growth.',
-                  color: 'bg-blue-100',
-                },
-                {
-                  year: '2022',
-                  title: 'AI Infrastructure Pivot',
-                  desc: 'Shifted to liquid-cooled high-density systems for AI/ML workloads.',
-                  color: 'bg-blue-200',
-                },
-              ].map((m, i) => (
-                <div
-                  key={i}
-                  className={`rounded-2xl p-6 shadow-md hover:shadow-xl transition ${m.color}`}
-                >
-                  <div className="text-3xl font-bold text-blue-700 mb-2">{m.year}</div>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-1">{m.title}</h3>
-                  <p className="text-gray-600 text-sm">{m.desc}</p>
-                </div>
-              ))}
-            </div>
-
-            {/* Metrics*/}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 mt-12">
-              {[
+            {/* Refined Metrics */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-12">
+              {[ 
                 { number: '200+', label: 'Customers Worldwide', color: 'text-green-600' },
                 { number: '30+', label: 'Countries Served', color: 'text-yellow-500' },
                 { number: '120+', label: 'Projects Delivered', color: 'text-sky-600' },
               ].map((item, idx) => (
                 <div key={idx} className="space-y-2">
                   <h3 className={`text-5xl font-extrabold ${item.color}`}>{item.number}</h3>
-                  <p className="text-base text-gray-600">{item.label}</p>
+                  <p className="text-base text-gray-700 font-medium">{item.label}</p>
                 </div>
               ))}
             </div>
@@ -159,7 +123,7 @@ export default function Home() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.3, duration: 0.6 }}
-                className="bg-blue-600 text-white px-8 py-3 rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg transition font-semibold mt-8"
+                className="bg-blue-600 text-white px-8 py-3 rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg transition font-semibold"
               >
                 Learn more about our journey
               </motion.button>
@@ -172,46 +136,56 @@ export default function Home() {
         {/* Features Section */}
         <section id="features" className="px-4 sm:px-6 py-24 bg-gradient-to-br from-blue-50 to-white">
           <div className="max-w-7xl mx-auto text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-purple-600 to-indigo-600 mb-4 leading-tight">
+            <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-purple-600 to-indigo-600 mb-6 leading-normal">
               Key Infrastructure Features
             </h2>
             <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
-              Integrated cooling, cabling, power, and security systems tailored for AI-ready data centers.
+              Integrated MEP, cabling, security, and cooling systems tailored for AI-ready data centers.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {[
+          <div className="max-w-6xl mx-auto space-y-20">
+            {[ 
+              {
+                title: 'Mechanical, Electrical, and Plumbing (MEP) Systems',
+                desc: 'Design and integration of HVAC, power, and plumbing systems for optimal data center uptime and energy efficiency.',
+                img: '/features/liquid2.jpeg',
+              },
+              {
+                title: 'Data Center Fit-Out',
+                desc: 'End-to-end interior build-out including raised flooring, containment systems, structured cabling, power distribution, and environmental controls.',
+                img: '/features/hac1.jpg',
+              },
+              {
+                title: 'Data Center Security Systems',
+                desc: 'Includes CCTV surveillance, access control, and secure network zones. Integrated with centralized monitoring dashboards.',
+                img: '/features/monitor1.png',
+              },
+              {
+                title: 'Hot Aisle Containment (HAC) Design',
+                desc: 'Custom containment structures to segregate hot exhaust airflow. Improves cooling efficiency and supports high-density racks.',
+                img: '/features/hac2.jpg',
+              },
               {
                 title: 'Liquid Cooling Deployment',
-                desc: 'Expertise in cold plate and immersion systems for ultra-dense AI workloads.',
+                desc: 'Cold plate and immersion cooling solutions supporting AI/ML clusters. Enhances thermal management and reduces energy costs.',
                 img: '/projects/liquid-cooling.jpg',
-              },
-              {
-                title: 'Structured Cabling & Power',
-                desc: 'End-to-end cabling, rPDU, and UPS integration across hyperscale and edge facilities.',
-                img: '/projects/cabling-power.jpg',
-              },
-              {
-                title: 'Turnkey Data Center Delivery',
-                desc: 'From concept to commissioning, including BMS, fire suppression, and project control.',
-                img: '/projects/scale.jpg',
-              },
+              }
             ].map(({ title, desc, img }, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition duration-300 overflow-hidden border border-gray-100"
+                className={`flex flex-col md:flex-row items-center gap-10 ${idx % 2 === 1 ? 'md:flex-row-reverse' : ''}`}
               >
-                <div className="w-full h-80 bg-gray-50 flex items-center justify-center">
+                <div className="md:w-1/2 w-full rounded-2xl overflow-hidden shadow-xl">
                   <img
                     src={`${prefix}${img}`}
                     alt={title}
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="p-6 text-left">
-                  <h3 className="text-2xl font-bold text-blue-700 mb-3">{title}</h3>
-                  <p className="text-gray-600 text-base leading-relaxed">{desc}</p>
+                <div className="md:w-1/2 w-full text-left">
+                  <h3 className="text-2xl md:text-3xl font-bold text-blue-700 mb-4">{title}</h3>
+                  <p className="text-gray-700 text-lg leading-relaxed">{desc}</p>
                 </div>
               </div>
             ))}
@@ -219,10 +193,13 @@ export default function Home() {
         </section>
 
 
+
+
+
         {/* Solutions Section */}
         <section id="solutions" className="px-4 sm:px-6 py-20 bg-white">
           <div className="max-w-7xl mx-auto text-center">
-            <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-purple-600 to-indigo-600 mb-10 leading-tight">
+            <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-purple-600 to-indigo-600 mb-10 leading-normal">
               Our Solutions
             </h2>
             <p className="text-lg text-gray-700 mb-16 leading-relaxed max-w-3xl mx-auto">
@@ -236,12 +213,12 @@ export default function Home() {
                   <WrenchScrewdriverIcon className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-blue-600 mb-3">Engineering & Construction</h3>
-                  <ul className="list-disc list-inside text-gray-700 space-y-2">
-                    <li>Liquid cooling AI data center design</li>
-                    <li>Low voltage, HAC, busway, cable tray</li>
-                    <li>Welding, cutting, forklifts, and aerial operations</li>
-                  </ul>
+                  <h3 className="text-xl font-semibold text-blue-700 mb-3">MEP Systems</h3>
+                    <ul className="list-disc list-inside text-gray-700 space-y-2">
+                      <li>HVAC, electrical panels, plumbing design & install</li>
+                      <li>Busways, cable trays, and power distribution</li>
+                      <li>Code-compliant construction with licensed teams</li>
+                    </ul>
                 </div>
               </div>
 
@@ -297,62 +274,24 @@ export default function Home() {
                     <ClipboardDocumentCheckIcon className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-indigo-700 mb-3">Quality & Project Management</h3>
-                    <ul className="list-disc list-inside text-gray-700 space-y-2">
-                      <li>Pressure, air-tightness testing & prefabrication</li>
-                      <li>Schedule tracking, safety officer oversight</li>
-                      <li>Full team governance: PMs, QC, installers</li>
-                    </ul>
+                    <h3 className="text-xl font-semibold text-indigo-600 mb-3">Safety, Quality & PM</h3>
+                      <ul className="list-disc list-inside text-gray-700 space-y-2">
+                        <li>OSHA-compliant field safety & PPE enforcement</li>
+                        <li>Project oversight with PMs, QC inspectors, safety officers</li>
+                        <li>Prefabrication, air-tightness testing, and live tracking</li>
+                      </ul>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
-
+        
+        {/* PM*/}
         <FrameworkSlider />
 
         {/* Market Trends Section */}
-        <section id="trends" className="px-4 sm:px-6 py-24 bg-gradient-to-br from-blue-50 to-white">
-          <div className="max-w-7xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-blue-700 mb-6">Why Liquid Cooling?</h2>
-            <p className="text-gray-700 text-lg leading-relaxed max-w-4xl mx-auto mb-12">
-              Traditional air cooling can no longer keep up with <strong>50kW+</strong> server racks. Cold plate and immersion cooling
-              enable sustainable, high-density deployments. The liquid cooling market is projected to surpass <strong>$2B</strong> by 2027,
-              driven by explosive AI demand.
-            </p>
-
-            <div className="flex flex-col lg:flex-row items-center gap-12">
-              {/* Image: enlarged, responsive */}
-              <div className="w-full lg:w-3/5">
-                <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-200">
-                  <img
-                    src={`${prefix}/images/liquid-vs-air.png`}
-                    alt="Liquid vs Air Cooling Comparison"
-                    className="w-full h-auto object-contain"
-                  />
-                </div>
-              </div>
-
-              {/* Key Descriptions */}
-              <div className="w-full lg:w-2/5 space-y-6 text-left">
-                <div className="bg-white p-6 rounded-xl shadow border-l-4 border-blue-600">
-                  <h4 className="text-xl font-semibold text-blue-700 mb-2">Cold Plate Cooling</h4>
-                  <p className="text-gray-600 text-base leading-relaxed">
-                    Delivers cooling directly to processors, achieving high thermal transfer efficiency without submerging hardware.
-                  </p>
-                </div>
-                <div className="bg-white p-6 rounded-xl shadow border-l-4 border-purple-600">
-                  <h4 className="text-xl font-semibold text-purple-700 mb-2">Immersion Cooling</h4>
-                  <p className="text-gray-600 text-base leading-relaxed">
-                    Servers are fully immersed in dielectric fluid, eliminating air friction and maximizing density per rack.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
+        <LiquidCoolingSlider/>
 
       </main>
 

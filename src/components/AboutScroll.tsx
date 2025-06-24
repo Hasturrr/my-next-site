@@ -5,27 +5,28 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Navigation, Pagination } from 'swiper/modules';
+import { prefix } from '@/utils/path';
 
 const slides = [
   {
+    title: 'Safety & Compliance',
+    desc: 'We enforce strict access control, PPE policies, and continuous training. Compliance includes ISO/IEC 27001 for data security, OSHA standards for field operations, and fire detection systems such as VESDA for mission-critical environments.',
+    image: `${prefix}/images/security-cert.png`,
+  },
+  {
     title: '4M1E Management',
     desc: 'A holistic management model emphasizing Manpower, Material, Machine, Method, and Environment. We ensure skilled personnel, certified materials, maintained equipment, standardized procedures, and a safe, organized workspace across every project.',
-    image: '/images/4m1e.png',
+    image: `${prefix}/images/4m1e.png`,
   },
   {
     title: 'Quality Assurance',
     desc: 'Quality is embedded throughout our construction lifecycle—from prefabrication and on-site air-tightness testing to material inspection and real-time issue tracking. Dedicated QC teams ensure that every step meets international benchmarks.',
-    image: '/images/quality.png',
-  },
-  {
-    title: 'Safety & Compliance',
-    desc: 'We enforce strict access control, PPE policies, and continuous training. Compliance includes ISO/IEC 27001 for data security, OSHA standards for field operations, and fire detection systems such as VESDA for mission-critical environments.',
-    image: '/images/security-cert.png',
+    image: `${prefix}/images/quality.png`,
   },
   {
     title: 'Project Governance',
     desc: 'Our governance framework includes experienced project managers, safety officers, and quality controllers. Weekly milestone reviews, schedule tracking tools, and centralized communication ensure end-to-end visibility and accountability.',
-    image: '/images/approach.png',
+    image: `${prefix}/images/approach.png`,
   },
 ];
 

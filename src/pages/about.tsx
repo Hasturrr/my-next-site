@@ -60,8 +60,7 @@ export default function About() {
             <div className="w-16 h-1 bg-gradient-to-r from-blue-400 to-indigo-500 mb-4 rounded-full" />
 
             <p className="text-lg mb-4 leading-relaxed text-blue-100">
-              Galaxy3 is a New York-based engineering and IT service company with offices in California, Arizona, and Mexico. We specialize in building high-performance infrastructure for AI-powered computing and hybrid cloud systems.
-            </p>
+              Headquartered in New York City, Galaxy3 is a full-service engineering and IT solutions provider focused on AI infrastructure and next-generation data centers. We maintain a strong presence across major deployment regions, including the Bay Area (CA), Phoenix (AZ), Austin and Dallas (TX), Atlanta (GA), and Mexico.            </p>
             <p className="text-lg leading-relaxed text-blue-100">
               With 15+ years of average engineer experience, we design, build, and manage next-gen data centers that power the future.
             </p>
@@ -106,8 +105,7 @@ export default function About() {
         </div>
       </section>
 
-
-      {/* Section 3 - group*/}
+      {/* Section 3 - certification */}
       <section className="w-full bg-white py-24 px-6">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div className="md:pr-10">
@@ -115,27 +113,29 @@ export default function About() {
               Expertise & Certifications
             </h2>
             <p className="mb-4 leading-relaxed text-gray-700">
-              Our team includes 20+ professionals with certifications such as CCIE, CCNP, MCSE, and cloud expertise.
-              We are licensed in California and Arizona (C10/C11), with extensive experience in low-voltage systems.
+              Our team includes 20+ business and technology professionals with 8+ years of experience in low-voltage project design and installation.
+              We are licensed in California and Arizona with C10/C11 electrical licenses.
             </p>
             <p className="leading-relaxed text-gray-700">
-              From MEP design to structured cabling, surveillance, paging, and AI server infrastructure—we deliver from planning to execution.
+              Employee specializations include:
             </p>
+            <ul className="list-disc list-inside text-gray-700 mt-2 space-y-1 text-base">
+              <li>MEP Design and Implementation</li>
+              <li>Video Surveillance & Access Control Systems</li>
+              <li>Low Voltage Cabling, Phone & Paging System Design</li>
+              <li>AI Data Center Architecture and Integration</li>
+            </ul>
           </div>
           <div className="flex items-center justify-center gap-6 flex-wrap bg-white p-6 rounded-2xl shadow-xl">
             <img
-              src={`${prefix}/images/banner_mid.png`}
+              src={`${prefix}/images/security-cert.png`}
               alt="Main Certifications"
-              className="h-32 object-contain"
-            />
-            <img
-              src={`${prefix}/images/certified1.png`}
-              alt="Google Cloud Certification"
               className="h-32 object-contain"
             />
           </div>
         </div>
       </section>
+
 
       {/* Section 4 - partner */}
       <section className="w-full bg-blue-25 py-24 px-6">
@@ -144,7 +144,7 @@ export default function About() {
           {/* image left */}
           <div className="order-1 w-full">
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 justify-items-center items-center">
-              {[1, 2, 7, 4, 8, 9, 10, 11, 6].map((n) => (
+              {[1, 2, 7, 8, 10, 11, 6].map((n) => (
                 <div
                   key={n}
                   className="bg-white rounded-lg p-4 shadow hover:shadow-lg transition-shadow duration-300"
